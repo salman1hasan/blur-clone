@@ -4,12 +4,11 @@ import Link from 'next/link';
 import { useAccount, useConnect } from 'wagmi';
 import { Search } from '@web3uikit/icons';
 import styles from '@/styles/Home.module.css';
-import { useQuery } from 'react-query';
 
 import Logo from '../public/assets/blurLogo.png';
 
-export default function Header() {
-  const { address, isConnected } = useAccount();
+export default function CollectionHeader() {
+  const { isConnected, address } = useAccount();
   const { connect, connectors } = useConnect();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +22,7 @@ export default function Header() {
   }, [isConnected]);
 
   return (
-    <section className={styles.header}>
+    <section className={styles.collectionHeader}>
       <section className={styles.logo}>
         <Link href="/">
           <Image src={Logo} alt="Blur Logo" width="70" height="" />
@@ -47,6 +46,7 @@ export default function Header() {
               disabled=""
               className={styles.inputField}
             />
+            <span></span>
           </section>
         </section>
         {isLoggedIn ? (
